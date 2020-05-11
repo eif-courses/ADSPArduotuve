@@ -29,9 +29,6 @@ public:
 
   void parduotuvesPrekiuSarasas(Parduotuve *parduotuve);
 
-
-
-
 };
 
 

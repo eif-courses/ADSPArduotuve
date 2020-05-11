@@ -18,7 +18,7 @@ void Krepselis::perziureti() {
 }
 
 void Krepselis::viso() {
-  double visoKaina;
+  double visoKaina = 0.0f;
   for(Produktas *p: produktai){
     visoKaina += p->getKaina();
   }
