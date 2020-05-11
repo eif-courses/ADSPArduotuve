@@ -1,48 +1,44 @@
 //
-// Created by Marius on 5/10/2020.
+// Created by Marius on 5/11/2020.
 //
 
 #include <iostream>
-#include <ctime>
 #include "Kompiuteris.h"
 #include "KonsolesSpalva.h"
 
 Kompiuteris::Kompiuteris(const std::string &pavadinimas) : pavadinimas(pavadinimas) {
-  srand (time(NULL));
-  generuot_unikalu_id();
+  generuoti_unikalu_id(0);
 }
 
 void Kompiuteris::informacija() {
   KonsolesSpalva::spalva(1);
-  std::cout <<pavadinimas<< std::endl;
+  std::cout << "--------------------------------------------------" << std::endl;
+  std::cout << pavadinimas << std::endl;
+  std::cout << "--------------------------------------------------" << std::endl;
   for(Komponentas *komponentas: komponentai){
     komponentas->informacija();
   }
   KonsolesSpalva::spalva(22);
-  std::cout << "Viso kaina: " << kaina() <<" eur"<< std::endl;
+  std::cout <<"Viso kaina: " << kaina() << " eur" << std::endl;
+
 }
 
-void Kompiuteris::idetiKomponenta(Komponentas *komponentas) {
+void Kompiuteris::ideti_komponenta(Komponentas *komponentas) {
   komponentai.push_back(komponentas);
-  KonsolesSpalva::spalva(5);
-  std::cout << "Įrenginys sėkmingai įdėtas į kompiuterį!!!"<<std::endl;
 }
 
 double Kompiuteris::kaina() {
-  double viso = 0.0f;
-  for(Komponentas *komponentas: komponentai){
-    viso += komponentas->kaina();
+  double viso = 0.0;
+  for(Komponentas *k: komponentai){
+    viso += k->kaina();
   }
   return viso;
 }
 
 int Kompiuteris::unikalusID() {
-  return rand() % 10000 +1;
+  return rand() % 10000 + 1; // 0 - 10000 + number
 }
 
-void Kompiuteris::generuot_unikalu_id() {
-  uid = unikalusID();
+void Kompiuteris::generuoti_unikalu_id(int number) {
+   uid = unikalusID() + number;
 }
-
-
-

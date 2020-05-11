@@ -1,5 +1,5 @@
 //
-// Created by Marius on 5/10/2020.
+// Created by Marius on 5/11/2020.
 //
 
 #ifndef PARDUOTUVE_DETALE_H
@@ -8,20 +8,21 @@
 
 #include "Komponentas.h"
 #include <string>
-class Detale: public Komponentas {
+class Detale : public Komponentas{
 private:
   std::string pavadinimas;
   std::string aprasymas;
-  double komponentoKaina;
-  long uid;
+  double detalesKaina;
+  int uid;
 public:
   void informacija() override;
-  double kaina() override;
   int unikalusID() override;
-  void generuoti_unikaluID(int number);
+  double kaina() override;
+  void generuoti_unikalu_id(int number);
   int gauti_unikalu_id() const;
   std::string gauti_aprasyma();
-  Detale(const std::string &pavadinimas, const std::string &aprasymas, double komponentoKaina);
+
+  Detale(const std::string &pavadinimas, const std::string &aprasymas, double detalesKaina);
 };
 
 
